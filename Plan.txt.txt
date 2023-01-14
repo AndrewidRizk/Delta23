@@ -1,1 +1,1 @@
-New Years Resolution app with user interaction
+New Years Resolution app with end-user interaction
