@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+.body{
+    background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(151, 165, 224));
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+</style>
+
+<body style="background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(151, 165, 224));
+background-repeat: no-repeat;
+  background-attachment: fixed;">
+<div class="container">
+    <h1>Movie Watchlist</h1>
+    <form action="/add_movie" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="movie_name">Movie name:</label>
+        <input type="text" id="movie_name" name="movie_name" required>
+        <br>
+        <input type="submit" value="Add Movie">
+    </form>
+</div>
+{% if text%}
+    <h3 style="font-size: 40px;">suggestions</h3>
+</body>
+</html>

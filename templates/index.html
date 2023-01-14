@@ -18,15 +18,22 @@ background-repeat: no-repeat;
   background-attachment: fixed;">
 <div class="container">
     <h1>Movie Watchlist</h1>
-    <form action="/add_movie" method="post">
+    <form class="grid" action="/result" method="POST">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" name="username" id="username"  required>
         <br>
-        <label for="movie_name">Movie name:</label>
-        <input type="text" id="movie_name" name="movie_name" required>
-        <br>
-        <input type="submit" value="Add Movie">
+        <input type="submit" name="username" value="View Movies">
     </form>
 </div>
+
+    <h3 style="font-size: 40px;">My Watchlist</h3>
+          <table width = screen.width class="center">
+            {% for word1 in data[i]%}
+              <tr>
+                <th style="color: #e84855;">{{word1}}</th>
+                 </tr>
+            {% endfor%}
+          </table>
+
 </body>
 </html>
