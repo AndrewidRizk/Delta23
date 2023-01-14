@@ -4,6 +4,8 @@
 html file that 
  - accepts a movie name 
  - generates watchlist 
- - displays recommendations
- - Andrew(check)
+ 
+
+ python file(s):
+ 
 

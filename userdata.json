@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "id": "example_user",
+            "movies": [
+                "The Shawshank Redemption",
+                "The Godfather",
+                "The Dark Knight"
+            ]
+        },
+        {
+            "id": "another_user",
+            "movies": [
+                "Pulp Fiction",
+                "The Lord of the Rings: The Fellowship of the Ring",
+                "The Good, the Bad and the Ugly"
+            ]
+        }
+    ]
+}
