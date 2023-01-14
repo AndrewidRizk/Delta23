@@ -12,7 +12,27 @@ userdata = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'userdata.js
 
 
 
+import requests
+def find_trailer(name):
 
+    api_key = "AIzaSyAyyf9lHMVXY5q4aFNIo4BTd8UVRJkTjo4"
+
+    movie_name = "name"
+
+    search_url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&q={movie_name}+trailer&type=video&key={api_key}"
+
+    response = requests.get(search_url)
+
+    data = response.json()
+
+    if data["items"]:
+        video_id = data["items"][0]["id"]["videoId"]
+        link = "https://www.youtube.com/watch?v="+video_id
+        #print(link)
+    else:
+        print("No video found.")
+
+    return link
 
 
 def getAuth(username):
@@ -40,9 +60,11 @@ def getAuth(username):
         print("The file userdata.json is not well-formatted.")
     except KeyError:
         print("The field 'users' or 'id' or 'movies' is not in the json file.")
-    return movies
+    return [len(movies)] + [username] + movies
 
 def postMovie(user, movie):
+    if movie == "":
+        return
     with open(userdata, "r") as fh:
         data = json.load(fh)
 
@@ -72,17 +94,27 @@ def driver(username, new_movie):
 
 app = Flask(__name__)
 
+
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("index.html")
 
+
 @app.route("/result", methods=['POST', 'GET'])
 def result():
-    output = request.form.to_dict()
-    name = output['name']
-    s = driver(name)
-    return render_template("index.html", text=name, data=s)
+    inp = request.form.to_dict()
+    text = inp['text']
+    s = driver(text, "")
+    return render_template("index.html", text=text, data=s)
+
+
+@app.route("/add", methods=['POST', 'GET'])
+def add():
+    inp = request.form.to_dict()
+    text = inp['text']
+    s = postMovie("example_user", text )
+    return render_template("index.html", text=text, data2=s)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

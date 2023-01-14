@@ -6,7 +6,7 @@
 </head>
 <style>
 .body{
-    background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(151, 165, 224));
+    background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(236, 168, 156));
   background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -18,25 +18,47 @@ background-repeat: no-repeat;
   background-attachment: fixed;">
 <div class="container">
     <h1>Movie Watchlist</h1>
-    <form class="grid" action="/result" method="POST">
-        <center>
+    <form action="/result" method="POST">
+        <textarea
+          rows="1"
+          cols="40"
+          name="text"
+          placeholder="input your username"
+          maxlength="100"
+        ></textarea>
+        <input type="Submit" value="submit" required></input>
+ <br>
 
-        </center>
-        <label for="Name">Username:</label>
-        <input type="text" name="name" id="name"  required>
-        <br>
-        <input type="submit" name="file_submit" value="View Movies">
-    </form>
+    {%if text%}
+        {% for i in range(2, (data[0] + 2))%}
+        <tr>
+        <th style="color: #e84855;">{{data[i]}}</th> <br>
+        </tr>
+        {% endfor%}
+    {% endif %}
+
+    <h1>Add a Movie</h1>
+    <form action="/add" method="POST">
+        <textarea
+          rows="1"
+          cols="40"
+          name="text"
+          placeholder="add a movie"
+          maxlength="100"
+        ></textarea>
+        <input type="Submit" value="submit" required></input>
+ <br> 
+        {%if text%}
+        {% for i in range(2, (data[0] + 2))%}
+        <tr>
+        <th style="color: #e84855;">{{data[i]}}</th> <br>
+        </tr>
+        {% endfor%}
+        {% endif %} 
+
+</form>     
 </div>
 
-    <h3 style="font-size: 40px;">My Watchlist</h3>
-          <table width = screen.width class="center">
-            {% for word1 in data[i]%}
-              <tr>
-                <th style="color: #e84855;">{{word1}}</th>
-                 </tr>
-            {% endfor%}
-          </table>
 
 </body>
 </html>
