@@ -1,4 +1,4 @@
-New Years Resolution app with end-user interaction
+
 
 
 html file that 
@@ -6,4 +6,3 @@ html file that
  - generates watchlist 
  - displays recommendations
 
- 
