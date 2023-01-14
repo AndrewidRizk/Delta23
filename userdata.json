@@ -15,6 +15,14 @@
                 "The Lord of the Rings: The Fellowship of the Ring",
                 "The Good, the Bad and the Ugly"
             ]
+        },
+        {
+            "id": "Joe Biden",
+            "movies": []
+        },
+        {
+            "id": "Bill Gates",
+            "movies": []
         }
     ]
 }
