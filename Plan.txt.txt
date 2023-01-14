@@ -1,4 +1,4 @@
-New Years Resolution app with end-user interaction
+
 
 
 html file that 
@@ -7,4 +7,3 @@ html file that
  - displays recommendations
  - Andrew(check)
 
- 
