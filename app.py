@@ -79,10 +79,10 @@ def home():
 
 @app.route("/result", methods=['POST', 'GET'])
 def result():
-    inp = request.form.to_dict()
-    text = inp['text']
-    s = driver(text)
-    return render_template("index.html", text=text, data=s)
+    output = request.form.to_dict()
+    name = output['name']
+    s = driver(name)
+    return render_template("index.html", text=name, data=s)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
