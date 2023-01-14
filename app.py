@@ -6,13 +6,13 @@ import json
 
 
 
+
 userdata = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'userdata.json')
 #userdata = "userdata.json"
 
 
 
-def driver(username, new_movie):
-    toPost = [[],[]]
+
 
 
 def getAuth(username):
@@ -63,3 +63,26 @@ def postMovie(user, movie):
 
 # user_id = 'example_user'
 # print(getAuth(user_id))
+
+## just username -> movies for now
+def driver(username, new_movie):
+    toPost = []
+    toPost = getAuth(username)
+    return toPost
+
+app = Flask(__name__)
+
+@app.route("/")
+@app.route("/home")
+def home():
+    return render_template("index.html")
+
+@app.route("/result", methods=['POST', 'GET'])
+def result():
+    inp = request.form.to_dict()
+    text = inp['text']
+    s = driver(text)
+    return render_template("index.html", text=text, data=s)
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)
