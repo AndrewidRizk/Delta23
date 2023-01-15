@@ -1,6 +1,6 @@
 
 from string import punctuation
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect
 import string
 import os, sys
 import json
@@ -74,7 +74,7 @@ def get_recommended_list(list_of_movies):
 
 if __name__ == '__main__':
     a7a = get_recommended_list(["kung fu panda"])
-    #print(a7a)
+    print(a7a)
 
 
 
@@ -116,7 +116,6 @@ def getAuth(username):
                 with open(userdata, 'w') as jsonfile:
                     json.dump(data, jsonfile, indent=4)
                 
-        session['userId'] = str(username)
 
 
 
@@ -127,8 +126,7 @@ def getAuth(username):
     except KeyError:
         print("The field 'users' or 'id' or 'movies' is not in the json file.")
     first = movies[0]
-    # return [len(movies)] +  movies
-    return movies
+    return [len(movies)] +  movies
 
 def postMovie(user, movie):
     if movie == "":
@@ -139,21 +137,13 @@ def postMovie(user, movie):
     for i in data['users']:
         if i["id"] == user:
             if movie in i["movies"]:
-                break
+                return
             else:
                 i["movies"].append(movie)
-
-            # l = len(i["movies"])
-            newMovieList = i["movies"]
 
     # write the updated data back to the json file
     with open(userdata, "w") as f:
         json.dump(data, f, indent = 4)
-
-    # return getAuth(username=user)
-    print(newMovieList)
-    return newMovieList
-
 
 
 
@@ -180,25 +170,19 @@ def home():
 
 @app.route("/get_watchlist", methods=['POST', 'GET'])
 def result():
-    # inp = request.form.to_dict()
-    # text = inp['text']
-    # s = driver(text, "")
-    userid = request.form["name"]
-    s = driver(userid,"")
-    return render_template("index.html", text=userid, data=s, userid = userid)
+    inp = request.form.to_dict()
+    text = inp['text']
+    s = driver(text, "")
+    return render_template("index.html", text=text, data=s, userid = text)
 
 
 @app.route("/add_movie", methods=['POST', 'GET'])
 def add():
     inp = request.form.to_dict()
     text = inp['movie']
-    username = session['userId']
-    s = postMovie(username, text)
-    return render_template("index.html", text=text, data=s, userid = username)
+    s = postMovie("example_user", text )
+    return render_template("index.html", text=text, data2=s)
 
 if __name__ == '__main__':
-    app.secret_key = 'super secret key'
-    app.config['SESSION_TYPE'] = 'memcached'
-
     app.run(debug=True, port=5001)
 

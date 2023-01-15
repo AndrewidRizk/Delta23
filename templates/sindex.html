@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+.body{
+    background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(236, 168, 156));
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+</style>
+
+<body style="background-image: linear-gradient(to bottom, rgb(238, 246, 241), rgb(104, 158, 228));
+background-repeat: no-repeat;
+  background-attachment: fixed;">
+<div class="container">
+    <center>
+    <h1>Movie Watchlist</h1>
+    <form action="/get_watchlist" method="POST">
+        <textarea
+          rows="1"
+          cols="40"
+          name="text"
+          placeholder="input your username"
+          maxlength="100"
+        ></textarea>
+        <input type="Submit" value="submit" name="get" required></input>
+ <br> <br> 
+ <form action="/add_movie" method="POST">
+    <textarea
+      rows="1"
+      cols="40"
+      name="text"
+      placeholder="input your new Movie"
+      maxlength="100"
+    ></textarea>
+    <input type="Submit" value="Add Movie" required></input>
+<br>
+
+
+
+
+
+</center>
+
+    {%if text%}
+        {% for i in range(1, (data[0] + 2))%}
+        <tr>
+        <th style="color: #e84855;">{{data[i]}}</th> <br>
+        </tr>
+        {% endfor%}
+    {% endif %}
+
+
+</form>     
+</div>
+
+
+</body>
+</html>

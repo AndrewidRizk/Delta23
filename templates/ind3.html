@@ -20,46 +20,36 @@ background-repeat: no-repeat;
     <center>
         <h1>Movie Watchlist</h1>
         <form action="/get_watchlist" method="POST">
-            <input type="text" id="username" name="name"></input>
-            <input type="Submit"></input>
-        </form>
+            <input type="text" id="username" name="text">
+            <input type="Submit" value="submit" name="text" required></input>
+            </form>
      <br> <br> <br>
-
      <form action="/add_movie" method="POST">
-        <input type="text" id="get_movie" name="movie"></input>
-        <input type="Submit" ></input>
-    </form>
-
+        <textarea
+          rows="1"
+          cols="40"
+          name="text"
+          placeholder="input your new Movie"
+          maxlength="100"
+        ></textarea>
+        <input type="Submit" value="Add Movie" required></input>
     <br>
-   
-    </form>  
-    
 
     {%if text%}
-
-        <h4>{{ userid }}'s Watchlist</h4>
-        <br>
-        {% for movie in data%}
+        <h4> Watchlist for {{userid}}</h4>
+        {% for i in data%}
         <tr>
-        <th style="color: #e84855;">{{movie}}</th> <br>
+        <th style="color: #e84855;">{{i}}</th> <br>
         </tr>
         {% endfor%}
-
-        <h4>Recommendations for {{ userid }}</h4>
-        <var></var>
-        <br>
-
     {% endif %}
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-        
 
-
-
-</div>
 
 </center>
-   
 
+
+</form>     
+</div>
 
 
 </body>
