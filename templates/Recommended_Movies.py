@@ -57,5 +57,5 @@ def get_recommended_list(list_of_movies):
 
 
 if __name__ == '__main__':
-    a7a = get_recommended_list(["kung fu panda"])
+    a7a = get_recommended_list(["batman", "avengers", "frozen", "barbie", "showhank"])
     print(a7a)
