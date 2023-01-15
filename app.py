@@ -80,8 +80,13 @@ def find_trailer(name):
 
     if data["items"]:
         video_id = data["items"][0]["id"]["videoId"]
+<<<<<<< HEAD
         link = "https://www.youtube.com/watch?v=" + video_id
         # print(link)
+=======
+        link = "https://www.youtube.com/embed/"+video_id
+        #print(link)
+>>>>>>> 9ef750bc7f037e8bef529250cbe8161db7e584d9
     else:
         print("No video found.")
 
@@ -170,8 +175,16 @@ def result():
     # text = inp['text']
     # s = driver(text, "")
     userid = request.form["name"]
+<<<<<<< HEAD
     s = driver(userid, "")
     return render_template("index.html", text=userid, data=s, userid=userid)
+=======
+    s = driver(userid,"")
+    r = get_recommended_list(s)
+    #r = ["Jaws", "Endgame"]
+    url = find_trailer(s[0])
+    return render_template("index.html", text=userid, data=[s,r], userid = userid, url = url)
+>>>>>>> 9ef750bc7f037e8bef529250cbe8161db7e584d9
 
 
 @app.route("/add_movie", methods=['POST', 'GET'])
@@ -180,8 +193,15 @@ def add():
     text = inp['movie']
     username = session['userId']
     s = postMovie(username, text)
+<<<<<<< HEAD
     return render_template("index.html", text=text, data=s, userid=username)
 
+=======
+   # r = ["Jaws", "Endgame"]
+    r = get_recommended_list(s)
+    url = find_trailer(s[0])
+    return render_template("index.html", text=text, data=[s,r], userid = username, url = url)
+>>>>>>> 9ef750bc7f037e8bef529250cbe8161db7e584d9
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'

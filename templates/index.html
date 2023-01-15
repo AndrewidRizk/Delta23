@@ -3,22 +3,22 @@
 <head>
     <title>Movie Watchlist</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    
 </head>
 <style>
 .body{
-    background-image: linear-gradient(to bottom, rgb(200, 240, 218), rgb(236, 168, 156));
-  background-repeat: no-repeat;
-    background-attachment: fixed;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 </style>
 
-<body style="background-image: linear-gradient(to bottom, rgb(238, 246, 241), rgb(104, 158, 228));
+<body class="body" style="background-image: linear-gradient(to bottom, rgb(238, 246, 241), rgb(104, 158, 228));
 background-repeat: no-repeat;
   background-attachment: fixed;">
 <div class="container">
     <center>
-        <h1>Movie Watchlist</h1>
+       <h1> MovieLens
+        </h1>
         <form action="/get_watchlist" method="POST">
             <input type="text" id="username" name="name"></input>
             <input type="Submit"></input>
@@ -45,6 +45,8 @@ background-repeat: no-repeat;
         </tr>
         {% endfor%}
 
+        
+        
         <h4>Recommendations for {{ userid }}</h4>
         {% for rec in data[1]%}
         <tr>
@@ -54,7 +56,7 @@ background-repeat: no-repeat;
         <br>
 
     {% endif %}
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+    <iframe width="420" height="315" src="{{ url }}"></iframe>
         
 
 
