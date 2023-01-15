@@ -39,14 +39,18 @@ background-repeat: no-repeat;
 
         <h4>{{ userid }}'s Watchlist</h4>
         <br>
-        {% for movie in data%}
+        {% for movie in data[0]%}
         <tr>
         <th style="color: #e84855;">{{movie}}</th> <br>
         </tr>
         {% endfor%}
 
         <h4>Recommendations for {{ userid }}</h4>
-        <var></var>
+        {% for rec in data[1]%}
+        <tr>
+        <th style="color: #e84855;">{{rec}}</th> <br>
+        </tr>
+        {% endfor%}
         <br>
 
     {% endif %}
