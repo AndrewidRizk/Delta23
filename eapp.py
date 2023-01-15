@@ -72,6 +72,9 @@ def get_recommended_list(list_of_movies):
     return get_recommended(genres[maxIndex])
 
 
+if __name__ == '__main__':
+    a7a = get_recommended_list(["kung fu panda"])
+    #print(a7a)
 
 
 
