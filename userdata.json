@@ -18,7 +18,8 @@
             "movies": [
                 "Pulp Fiction",
                 "The Lord of the Rings: The Fellowship of the Ring",
-                "The Good, the Bad and the Ugly"
+                "The Good, the Bad and the Ugly",
+                "The Godfather"
             ]
         },
         {
@@ -59,8 +60,13 @@
         {
             "id": "Joseph",
             "movies": [
-                "Drive"
+                "Drive",
+                "Barbie"
             ]
+        },
+        {
+            "id": "antoher_user",
+            "movies": []
         }
     ]
 }
