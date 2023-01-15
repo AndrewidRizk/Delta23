@@ -67,6 +67,19 @@
         {
             "id": "antoher_user",
             "movies": []
+        },
+        {
+            "id": "Marge",
+            "movies": [
+                "Barbie"
+            ]
+        },
+        {
+            "id": "New_User_Joe",
+            "movies": [
+                "Joker",
+                "Barbie"
+            ]
         }
     ]
 }

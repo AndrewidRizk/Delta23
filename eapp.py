@@ -177,7 +177,7 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-
+ 
 @app.route("/get_watchlist", methods=['POST', 'GET'])
 def result():
     # inp = request.form.to_dict()

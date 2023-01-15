@@ -1,4 +1,3 @@
-
 from string import punctuation
 from flask import Flask, render_template, request, url_for, redirect, session
 import string
@@ -184,7 +183,7 @@ def result():
     s = driver(userid,"")
     r = get_recommended_list(s)
     #r = ["Jaws", "Endgame"]
-    url = find_trailer(s[0])
+    url = ""
     return render_template("index.html", text=userid, data=[s,r], userid = userid, url = url)
 
 
@@ -196,7 +195,8 @@ def add():
     s = postMovie(username, text)
    # r = ["Jaws", "Endgame"]
     r = get_recommended_list(s)
-    url = find_trailer(s[0])
+    # url = find_trailer(s[0])
+    url = ""
     return render_template("index.html", text=text, data=[s,r], userid = username, url = url)
 
 if __name__ == '__main__':

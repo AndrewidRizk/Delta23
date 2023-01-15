@@ -10,7 +10,7 @@ def find_trailer(name):
     response = requests.get(search_url)
 
     data = response.json()
-
+ 
     if data["items"]:
         video_id = data["items"][0]["id"]["videoId"]
         link = "https://www.youtube.com/watch?v="+video_id
