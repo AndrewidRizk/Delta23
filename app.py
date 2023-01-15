@@ -89,7 +89,7 @@ def find_trailer(name):
 
     if data["items"]:
         video_id = data["items"][0]["id"]["videoId"]
-        link = "https://www.youtube.com/watch?v="+video_id
+        link = "https://www.youtube.com/embed/"+video_id
         #print(link)
     else:
         print("No video found.")
@@ -184,7 +184,7 @@ def result():
     s = driver(userid,"")
     r = get_recommended_list(s)
     #r = ["Jaws", "Endgame"]
-    url = find_trailer("Inside Out")
+    url = find_trailer(s[0])
     return render_template("index.html", text=userid, data=[s,r], userid = userid, url = url)
 
 
@@ -196,7 +196,7 @@ def add():
     s = postMovie(username, text)
    # r = ["Jaws", "Endgame"]
     r = get_recommended_list(s)
-    url = find_trailer("Inside Out")
+    url = find_trailer(s[0])
     return render_template("index.html", text=text, data=[s,r], userid = username, url = url)
 
 if __name__ == '__main__':
