@@ -1,7 +1,6 @@
-
+import string
 from string import punctuation
 from flask import Flask, render_template, request, url_for, redirect, session
-import string
 import os, sys
 import json
 import requests
@@ -9,14 +8,10 @@ import requests
 from imdb import IMDb
 import imdb
 
-
-
-
-
 userdata = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'userdata.json')
-#userdata = "userdata.json"
 
 
+# userdata = "userdata.json"
 
 
 # given the name of the movie, gives the genres (category) of the movie
@@ -72,11 +67,7 @@ def get_recommended_list(list_of_movies):
     return get_recommended(genres[maxIndex])
 
 
-
-
-
 def find_trailer(name):
-
     api_key = "AIzaSyAyyf9lHMVXY5q4aFNIo4BTd8UVRJkTjo4"
 
     movie_name = "name"
@@ -89,8 +80,8 @@ def find_trailer(name):
 
     if data["items"]:
         video_id = data["items"][0]["id"]["videoId"]
-        link = "https://www.youtube.com/watch?v="+video_id
-        #print(link)
+        link = "https://www.youtube.com/watch?v=" + video_id
+        # print(link)
     else:
         print("No video found.")
 
@@ -112,7 +103,7 @@ def getAuth(username):
                 data['users'].append({'id': username, 'movies': []})
                 with open(userdata, 'w') as jsonfile:
                     json.dump(data, jsonfile, indent=4)
-                
+
         session['userId'] = str(username)
 
 
@@ -123,9 +114,10 @@ def getAuth(username):
         print("The file userdata.json is not well-formatted.")
     except KeyError:
         print("The field 'users' or 'id' or 'movies' is not in the json file.")
-    
+
     # return [len(movies)] +  movies
     return movies
+
 
 def postMovie(user, movie):
     if movie == "":
@@ -145,25 +137,22 @@ def postMovie(user, movie):
 
     # write the updated data back to the json file
     with open(userdata, "w") as f:
-        json.dump(data, f, indent = 4)
+        json.dump(data, f, indent=4)
 
     # return getAuth(username=user)
     print(newMovieList)
     return newMovieList
 
 
-
-
 # user_id = 'example_user'
 # print(getAuth(user_id))
+# just username -> movies for now
 
-## just username -> movies for now
 def driver(username, new_movie):
     toPost = []
     toPost = getAuth(username)
-    #toRec = get_recommended_list(toPost)
+    # toRec = get_recommended_list(toPost)
     return toPost
-
 
 
 app = Flask(__name__)
@@ -181,8 +170,8 @@ def result():
     # text = inp['text']
     # s = driver(text, "")
     userid = request.form["name"]
-    s = driver(userid,"")
-    return render_template("index.html", text=userid, data=s, userid = userid)
+    s = driver(userid, "")
+    return render_template("index.html", text=userid, data=s, userid=userid)
 
 
 @app.route("/add_movie", methods=['POST', 'GET'])
@@ -191,11 +180,11 @@ def add():
     text = inp['movie']
     username = session['userId']
     s = postMovie(username, text)
-    return render_template("index.html", text=text, data=s, userid = username)
+    return render_template("index.html", text=text, data=s, userid=username)
+
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'memcached'
 
     app.run(debug=True, port=5001)
-
