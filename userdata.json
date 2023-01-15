@@ -80,6 +80,12 @@
                 "Joker",
                 "Barbie"
             ]
+        },
+        {
+            "id": "New_User",
+            "movies": [
+                "Barbie"
+            ]
         }
     ]
 }

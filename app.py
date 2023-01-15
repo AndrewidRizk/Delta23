@@ -155,6 +155,7 @@ def driver(username, new_movie):
     return toPost
 
 
+
 app = Flask(__name__)
 
 
@@ -174,7 +175,9 @@ def result():
     #return render_template("index.html", text=userid, data=s, userid=userid)
     r = get_recommended_list(s)
     #r = ["Jaws", "Endgame"]
-    url = ""
+    if s != []: url = find_trailer(s[0])
+    else: url = ""
+    #url = ""
     return render_template("index.html", text=userid, data=[s,r], userid = userid, url = url)
 
 
@@ -187,8 +190,9 @@ def add():
     s = postMovie(username, text)
    # r = ["Jaws", "Endgame"]
     r = get_recommended_list(s)
-    # url = find_trailer(s[0])
-    url = ""
+    if s != []: url = find_trailer(s[0])
+    else: url = ""
+    # url = ""
     return render_template("index.html", text=text, data=[s,r], userid = username, url = url)
 
 if __name__ == '__main__':
